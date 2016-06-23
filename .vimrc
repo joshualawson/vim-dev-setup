@@ -4,6 +4,9 @@ let mapleader=","
 set nocompatible
 set hidden
 
+"Disable line wrapping
+set nowrap
+
 "Syntax highlighting
 syntax on
 
@@ -68,3 +71,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+"Open nerd tree if file not open
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"Ctrl + N to open nerd tree
+map <C-n> :NERDTreeToggle<CR>
